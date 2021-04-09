@@ -7,19 +7,26 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
         
-        <bean class="com.xworkz.fooodDelivery.repository.FooodItemRepositoryImpl" id="fooodItemRepositoryImpl" scope="singleton"/>
+        <bean class="com.xworkz.fooodDelivery.repository.FooodItemRepositoryImpl" id="fooodItemRepositoryImpl" scope="singleton">
+        <constructor-arg ref="localSessionFactoryBean"/>
+        </bean>
+        
         
         <bean class="com.xworkz.fooodDelivery.service.FooodItemServiceImpl" id="fooodItemServiceImpl" scope="singleton">
         <constructor-arg ref="fooodItemRepositoryImpl"/>
         </bean>
         
-        <bean class="com.xworkz.fooodDelivery.repository.CustomerrRepositoryImple" id="customerrRepositoryImple" scope="singleton"/>
+        <bean class="com.xworkz.fooodDelivery.repository.CustomerrRepositoryImple" id="customerrRepositoryImple" scope="singleton">
+        <constructor-arg ref="localSessionFactoryBean"/>
+        </bean>
         
         <bean class="com.xworkz.fooodDelivery.service.CustomerrServiceImpl" id="customerrServiceImpl" scope="singleton">
         <constructor-arg ref="customerrRepositoryImple"/>
         </bean>
         
-        <bean class="com.xworkz.fooodDelivery.repository.HotelVendorRepositoryImple" id="hotelVendorRepositoryImple" scope="singleton"/>
+        <bean class="com.xworkz.fooodDelivery.repository.HotelVendorRepositoryImple" id="hotelVendorRepositoryImple" scope="singleton">
+        <constructor-arg ref="localSessionFactoryBean"/>
+        </bean>
         
         <bean class="com.xworkz.fooodDelivery.service.HotelVendorServiceImpl" id="hotelVendorServiceImpl" scope="singleton">
         <constructor-arg ref="hotelVendorRepositoryImple"/>
