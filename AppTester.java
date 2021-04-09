@@ -2,6 +2,7 @@ package com.xworkz;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import com.xworkz.fooodDelivery.constants.FooodType;
 import com.xworkz.fooodDelivery.constants.Gender;
@@ -18,17 +19,18 @@ public class AppTester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ApplicationContext container=new ClassPathXmlApplicationContext("first.xml");
+		
+		ApplicationContext container=new ClassPathXmlApplicationContext("first.xml","application-db.xml");
 		FooodItemService service=container.getBean(FooodItemService.class);
-		FooodItemEntity entity=new FooodItemEntity("Idli", 30, FooodType.SOUTHINDIAN, 01, 0);
+		FooodItemEntity entity=new FooodItemEntity("Dosa", 40, FooodType.SOUTHINDIAN, 02, 10);
 		service.saveAndValidate(entity);
 		
 		CustomerrService service1=container.getBean(CustomerrService.class);
-		CustomerrEntity entity1=new CustomerrEntity("Anjali", "Mangalore", 3.5, 9737625567l,"Anjali@gmail.com", Gender.WOMEN);
+		CustomerrEntity entity1=new CustomerrEntity("Anusha", "Shivamoga", 4.5, 9737628747l,"anusha@gmail.com", Gender.WOMEN);
 		service1.saveAndValidate(entity1);
 		
 		HotelVendorService service2=container.getBean(HotelVendorService.class);
-		HotelVendorEntity entity2=new HotelVendorEntity("Impana","Bangalore", 4.5, VendorrType.WHOLESALERS);
+		HotelVendorEntity entity2=new HotelVendorEntity("Suparna","Sagara", 4.0, VendorrType.RETAILERS);
 		service2.saveAndValidate(entity2);
 		}
 	}
